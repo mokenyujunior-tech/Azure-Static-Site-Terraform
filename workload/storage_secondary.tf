@@ -39,15 +39,6 @@ resource "azurerm_storage_account" "secondary" {
   allow_nested_items_to_be_public = true
   public_network_access_enabled   = true
 
-  blob_properties {
-    delete_retention_policy {
-      days = 0
-    }
-    container_delete_retention_policy {
-      days = 0
-    }
-  }
-
   tags = merge(var.common_tags, {
     costcategory = "Storage"
     region       = var.secondary_location

@@ -39,21 +39,10 @@ resource "azurerm_storage_account" "primary" {
   access_tier              = "Hot"
 
   # ── Security ──
-  min_tls_version                 = "TLS1_2"
+  min_tls_version                 = "TLS12"
   https_traffic_only_enabled      = true
   allow_nested_items_to_be_public = true   # Required: $web needs anonymous read
   public_network_access_enabled   = true   # Required initially; locked down later
-
-  # ── Disable unnecessary data protection features ──
-  # These cost money by retaining deleted/versioned data. Our files are in Git.
-  blob_properties {
-    delete_retention_policy {
-      days = 0       # 0 = disabled
-    }
-    container_delete_retention_policy {
-      days = 0       # 0 = disabled
-    }
-  }
 
   tags = merge(var.common_tags, {
     costcategory = "Storage"
