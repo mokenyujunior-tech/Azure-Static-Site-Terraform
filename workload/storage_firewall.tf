@@ -43,7 +43,7 @@ resource "azurerm_storage_account_network_rules" "primary" {
   # No IP rules — even you can't access the storage endpoint directly.
   # Upload files via CLI using --auth-mode login (which uses Azure AD, not
   # the storage endpoint network path).
-  ip_rules                   = []
+  ip_rules                   = [var.admin_ip]
   virtual_network_subnet_ids = []
 
   depends_on = [
