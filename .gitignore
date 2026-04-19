@@ -1,0 +1,48 @@
+###############################################################################
+# .gitignore — Azure Static Site Terraform
+# ----------------------------------------------------------------------------
+# Prevents sensitive files, Terraform state, and build artifacts from being
+# committed to Git. Learned this lesson on the Cost Visibility Dashboard
+# project — accidental tfvars commits required git-filter-repo to clean up.
+###############################################################################
+
+# ─── Terraform ──────────────────────────────────────────────────────────────
+# State files contain sensitive info (resource IDs, storage keys, etc.)
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+
+# Plan files can contain sensitive values
+*.tfplan
+
+# User-specific variable files (contain subscription IDs, emails, etc.)
+*.tfvars
+!*.tfvars.example
+
+# Crash logs from Terraform
+crash.log
+crash.*.log
+
+# Override files used for local development
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# ─── OS Files ───────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ─── IDE Files ──────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ─── Miscellaneous ──────────────────────────────────────────────────────────
+*.bak
+*.tmp
+*.log

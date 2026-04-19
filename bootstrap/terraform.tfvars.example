@@ -1,0 +1,13 @@
+###############################################################################
+# terraform.tfvars.example — Bootstrap
+# ----------------------------------------------------------------------------
+# Copy this file to terraform.tfvars and fill in your subscription ID.
+# The real terraform.tfvars is in .gitignore — never commit it.
+###############################################################################
+
+subscription_id = "ec289c8e-4873-4660-a368-35309d8ca713"
+
+# ─── OPTIONAL (uncomment to override defaults) ─────────────────────────────
+# domain_name             = "mokcloud.site"
+# dns_resource_group_name = "rg-dns-shared"
+# location                = "canadacentral"
