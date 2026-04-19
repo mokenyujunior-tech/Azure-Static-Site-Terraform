@@ -27,6 +27,12 @@ variable "tenant_id" {
   default     = "6d1a1189-71c0-454f-bd1d-208980e7c2d5"
 }
 
+variable "admin_ip" {
+  description = "Your public IP address. Allows CLI uploads and portal access to storage while firewall is set to Deny. Find it at https://ifconfig.me"
+  type        = string
+  default     = "205.189.187.4"
+}
+
 # ─── DNS (from bootstrap) ────────────────────────────────────────────────────
 
 variable "dns_zone_id" {
