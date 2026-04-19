@@ -34,6 +34,18 @@
 #   https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account_network_rules
 ###############################################################################
 
+# ─── Auto-detect your current public IP ─────────────────────────────────────
+# Every time you run terraform apply, this fetches your laptop's current
+# public IP from ifconfig.me. If your IP changes (new Wi-Fi, VPN, etc.),
+# just run terraform apply again and the firewall updates automatically.
+data "http" "my_ip" {
+  url = "https://ifconfig.me/ip"
+}
+
+locals {
+  admin_ip = chomp(data.http.my_ip.response_body)
+}
+
 # ─── Primary Storage Firewall ────────────────────────────────────────────────
 resource "azurerm_storage_account_network_rules" "primary" {
   storage_account_id = azurerm_storage_account.primary.id
@@ -43,7 +55,7 @@ resource "azurerm_storage_account_network_rules" "primary" {
   # No IP rules — even you can't access the storage endpoint directly.
   # Upload files via CLI using --auth-mode login (which uses Azure AD, not
   # the storage endpoint network path).
-  ip_rules                   = [var.admin_ip]
+  ip_rules                   = [local.admin_ip]
   virtual_network_subnet_ids = []
 
   depends_on = [
@@ -58,7 +70,7 @@ resource "azurerm_storage_account_network_rules" "secondary" {
   default_action     = "Deny"
   bypass             = ["AzureServices"]
 
-  ip_rules                   = []
+  ip_rules                   = [local.admin_ip]
   virtual_network_subnet_ids = []
 
   depends_on = [
