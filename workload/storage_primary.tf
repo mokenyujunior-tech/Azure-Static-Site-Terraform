@@ -39,7 +39,7 @@ resource "azurerm_storage_account" "primary" {
   access_tier              = "Hot"
 
   # ── Security ──
-  min_tls_version                 = "TLS12"
+  min_tls_version                 = "TLS1_2"
   https_traffic_only_enabled      = true
   allow_nested_items_to_be_public = true   # Required: $web needs anonymous read
   public_network_access_enabled   = true   # Required initially; locked down later
