@@ -34,7 +34,7 @@ resource "azurerm_cdn_frontdoor_custom_domain" "www" {
 
   tls {
     certificate_type    = "ManagedCertificate"
-    minimum_tls_version = "TLS1_2"
+    minimum_tls_version = "TLS12"
   }
 }
 
