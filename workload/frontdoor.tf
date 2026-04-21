@@ -124,7 +124,7 @@ resource "azurerm_cdn_frontdoor_origin" "primary" {
   priority           = 1
   weight             = 1000
 
-  depends_on = [azurerm_storage_account_static_website.primary]
+  depends_on = [azurerm_storage_blob.primary]
 }
 
 # ─── Secondary Origin (East US) ─────────────────────────────────────────────
@@ -147,7 +147,7 @@ resource "azurerm_cdn_frontdoor_origin" "secondary" {
   priority           = 2
   weight             = 1000
 
-  depends_on = [azurerm_storage_account_static_website.secondary]
+  depends_on = [azurerm_storage_blob.secondary]
 }
 
 # ─── Route ──────────────────────────────────────────────────────────────────
