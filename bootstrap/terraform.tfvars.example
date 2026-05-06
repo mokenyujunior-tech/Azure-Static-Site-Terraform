@@ -5,7 +5,7 @@
 # The real terraform.tfvars is in .gitignore — never commit it.
 ###############################################################################
 
-subscription_id = "ec289c8e-4873-4660-a368-35309d8ca713"
+subscription_id = "ec239c0e-0393-4660-a668-35309d8ca553"
 
 # ─── OPTIONAL (uncomment to override defaults) ─────────────────────────────
 # domain_name             = "mokcloud.site"
