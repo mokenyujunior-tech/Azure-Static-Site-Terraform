@@ -49,7 +49,7 @@ locals {
 # ─── Primary Storage Firewall ────────────────────────────────────────────────
 resource "azurerm_storage_account_network_rules" "primary" {
   storage_account_id = azurerm_storage_account.primary.id
-  default_action     = "Deny"
+  default_action     = "Allow"
   bypass             = ["AzureServices"]
 
   # No IP rules — even you can't access the storage endpoint directly.
@@ -67,7 +67,7 @@ resource "azurerm_storage_account_network_rules" "primary" {
 # ─── Secondary Storage Firewall ──────────────────────────────────────────────
 resource "azurerm_storage_account_network_rules" "secondary" {
   storage_account_id = azurerm_storage_account.secondary.id
-  default_action     = "Deny"
+  default_action     = "Allow"
   bypass             = ["AzureServices"]
 
   ip_rules                   = [local.admin_ip]
