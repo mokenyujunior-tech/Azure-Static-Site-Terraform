@@ -171,7 +171,7 @@ resource "azurerm_cdn_frontdoor_route" "default" {
   ]
 
   enabled                = true
-  forwarding_protocol    = "HttpsOnly"
+  forwarding_protocol    = "MatchRequest"
   https_redirect_enabled = true
   patterns_to_match      = ["/*"]
   supported_protocols    = ["Http", "Https"]

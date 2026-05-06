@@ -1,0 +1,12 @@
+{
+  "properties": {
+    "networkAcls": {
+      "resourceAccessRules": [
+        {
+          "tenantId": "6d1a1189-71c0-454f-bd1d-208980e7c2d5",
+          "resourceId": "/subscriptions/ec289c8e-4873-4660-a368-35309d8ca713/resourceGroups/rg-staticsite-prod/providers/Microsoft.Cdn/profiles/afd-mksite-prod"
+        }
+      ]
+    }
+  }
+}

@@ -81,3 +81,17 @@ resource "azurerm_dns_cname_record" "www" {
 
   tags = var.common_tags
 }
+
+# ─── A Alias Record: apex → Front Door endpoint ────────────────────────────
+# Points mokcloud.site (no www) to the Front Door endpoint.
+# Uses an alias record because Front Door's IPs change — alias records
+# resolve to the Azure resource directly instead of a fixed IP.
+resource "azurerm_dns_a_record" "apex" {
+  name                = "@"
+  zone_name           = data.azurerm_dns_zone.main.name
+  resource_group_name = var.dns_resource_group_name
+  ttl                 = 3600
+  target_resource_id  = azurerm_cdn_frontdoor_endpoint.main.id
+
+  tags = var.common_tags
+}
