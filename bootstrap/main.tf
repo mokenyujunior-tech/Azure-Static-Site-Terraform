@@ -42,7 +42,7 @@ resource "azurerm_resource_group" "dns" {
 # The zone itself is a global resource — it doesn't live in one region.
 # The location on the resource group is just metadata storage.
 resource "azurerm_dns_zone" "main" {
-  name                = dns_zone_name
+  name                = var.domain_name
   resource_group_name = azurerm_resource_group.dns.name
   tags                = var.tags
 }
